@@ -1,2 +1,0 @@
-# AroundTheWorldWithGosia
-Final Project

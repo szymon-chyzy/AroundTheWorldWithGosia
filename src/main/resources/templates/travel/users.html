@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<link href="../static/js/bootstrap.js" rel="js" th:href="@{/js/bootstrap.js}"/>
+
+<head>
+    <meta charset="UTF-8">
+    <title>G&S | Travellers[users]</title>
+</head>
+<style>
+    .crop {
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .crop img {
+        height: 300px;
+        margin: -70px 0 0 -70px;
+    }
+
+     .gallery {
+         -webkit-column-count: 3;
+         -moz-column-count: 3;
+         column-count: 3;
+         -webkit-column-width: 33%;
+         -moz-column-width: 33%;
+         column-width: 33%; }
+    .gallery .pics {
+        -webkit-transition: all 350ms ease;
+        transition: all 350ms ease; }
+    .gallery .animation {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1); }
+
+    @media (max-width: 450px) {
+        .gallery {
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+            -webkit-column-width: 100%;
+            -moz-column-width: 100%;
+            column-width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .btn.filter {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white container">
+    <a class="navbar-brand mr-auto" href="/">
+        <img th:src="@{/img/lg.png}" height="80" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse h5" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/list">Travels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/form">TravelForm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/userform">UserForm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/photos">Photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/photoform">AddPhoto</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="crop">
+    <img th:src="@{/img/users2.jpg}" alt="img">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+
+
+
+    <div th:each="user: ${users}">
+    <div class="card m-2 float-left" style="width: 18rem;">
+        <div class="card-body">
+            <h3 class="card-title border-bottom pb-3" th:text="${user.getName()}"></h3>
+            <small><label>Favourite place:</label></small>
+            <p class="card-text border-bottom pb-3" th:text="${user.getFav()}"></p>
+            <small><label>Who Am I?</label></small>
+            <p class="card-text border-bottom pb-3" th:text="${user.getDescribe()}"></p>
+            <div class="btn-sm mr-0 float-right" role="group">
+            <a th:href="@{/travel/useredit/{id}(id=${user.id})}"><button type="button" class="btn btn-sm btn-outline-dark">
+                Edytuj</button></a>
+            <a th:href="@{/travel/userdelete/{id}(id=${user.id})}"><button type="button" class="btn btn-sm btn-outline-danger">
+             Usuń</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+
+
+
+        <div class="col-md-2 border-left text-dark">
+
+            <img th:src="@{/img/g.png}" class="rounded-circle mx-auto d-block" height="120" width="120" alt="Gosia">
+            <br>
+            <h5><p class="text-center text-dark">Gosia</p></h5>
+            <hr>
+            <p class="text-center">
+                The best companion on a journey through life</p>
+            <br>
+            <img th:src="@{/img/s.png}" class="rounded-circle mx-auto d-block" height="120" width="120" alt="Szymon">
+            <br>
+            <h5><p class="text-center">Szymon</p></h5>
+            <hr>
+            <p class="text-center">He visits, travels, years, rides, walks, and is currently trying to assemble this blog</p>
+
+        </div>
+        </div>
+</div>
+
+
+
+</body>
+</html>

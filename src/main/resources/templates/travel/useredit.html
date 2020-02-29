@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<link href="../static/js/bootstrap.js" rel="js" th:href="@{/js/bootstrap.js}"/>
+<head>
+    <meta charset="UTF-8">
+    <title>G&S | Traveller edit form</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white container">
+    <a class="navbar-brand mr-auto" href="/">
+        <img th:src="@{/img/lg.png}" height="80" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse h5" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/list">Travels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/form">TravelForm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/userform">UserForm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/photos">Photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/travel/photoform">AddPhoto</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="view" style="background-image: url('https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/09-9226610_uploadsmember665562yourshot-665562-9226610jpg_igdjhxksrjifxjzu4rgbsw37bhp3eflutfvvbpyjwjhzlmh4iziq_3000x2000.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-gradient align-items-center">
+
+        <form action="#" th:action="@{/travel/useredit}" th:object="${user}" method="post">
+            <div class="container" title="Traveller edit" style="margin-top: 50px;">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="pl-4 pr-4 pb-1 pt-1 bg-white"><div class="form-group text-center">
+                            <h3>New traveler form</h3>
+                        </div>
+                            <div class="form-group">
+                                <hr>
+                            </div>
+                            <div class="form-group">
+                                <label>What's Your name?</label><input type="text" class="form-control" placeholder="Nickname/Name" th:field="*{name}" />
+                            </div>
+                            <div class="form-group">
+                                <label>Favourite place:</label><input type="text" class="form-control" placeholder="here would you go again?" th:field="*{fav}" />
+                            </div>
+                            <div class="form-group">
+                                <label>Describe yourself:</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="About You" th:field="*{describe}" />
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" value="Save" class="btn btn-outline-primary">Save Traveller</button>
+                            </div>
+                            <input type="hidden" id="id" th:field="*{id}">
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
